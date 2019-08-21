@@ -165,3 +165,51 @@
 - [반복주기1을 진행하면서 문제 해결 정리, 글쓰는 개발자 Jbee](http://asfirstalways.tistory.com/292)
 - [반복주기1의 원격서버를 Docker를 이용해서 해결, Inki Hwang](https://fisache.github.io/Install-Docker/)
 - [개발관련 정리 사이트(추천도서 등)](http://asfirstalways.tistory.com/293)
+
+## Git
+### Fork 저장소 최신화
+```sh
+# 포크된 로컬 저장소 https://github.com/InSeong-So/spring-boot
+# 포크한 원본 저장소 https://github.com/spring-projects/spring-boot
+
+// 포크 저장소를 로컬로 클론
+$ git clone https://github.com/InSeong-So/spring-boot
+
+// 로컬 저장소로 이동
+$ cd spring-boot
+
+// 현재 설정된 리모트 저장소 조회
+$ git remote -v
+origin	https://github.com/InSeong-So/spring-boot (fetch)
+origin	https://github.com/InSeong-So/spring-boot (push)
+
+// 리모트 저장소 추가
+$ git remote add upstream https://github.com/spring-projects/spring-boot
+
+// 리모트 저장소 확인
+$ git remote -v
+origin	https://github.com/InSeong-So/spring-boot (fetch)
+origin	https://github.com/InSeong-So/spring-boot (push)
+upstream	https://github.com/spring-projects/spring-boot (fetch)
+upstream	https://github.com/spring-projects/spring-boot (push)
+
+// 리모트 저장소 fetch
+$ git fetch upstream
+remote: Counting objects: 1942, done.
+remote: Total 1942 (delta 1624), reused 1624 (delta 1624), pack-reused 891
+Receiving objects: 100% (1942/1942), 871.59 KiB | 942.01 KiB/s, done.
+Resolving deltas: 100% (1793/1793), completed with 149 local objects.
+From https://github.com/spring-projects/spring-boot
+...
+
+// 리모트 저장소 merge
+$ git merge upstream/master
+Updating ...
+Fast-forward
+...
+
+// 포크 저장소로 push
+$ git push
+Counting objects: 1942, done.
+...
+```
